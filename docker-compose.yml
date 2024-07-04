@@ -22,12 +22,6 @@ services:
         volumes:
             - "./php/php.ini:/usr/local/etc/php/conf.d/php.ini"
             - "./httpd:/var/www/html"
-    composer:
-        image: "composer"
-        volumes:
-            - "./web/app:/app"
-        command: install
-    
     mysqldb:
         image: mysql:${MYSQL_VERSION}
         container_name: ${MYSQL_HOST}

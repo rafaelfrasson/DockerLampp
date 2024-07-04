@@ -1,0 +1,45 @@
+services:
+    web:
+        image: nginx:alpine
+        volumes:
+            - "./nginx/default.conf:/etc/nginx/conf.d/default.conf"
+            - "./nginx/ssl:/etc/ssl"
+            - "./httpd:/var/www/html"
+            - "./nginx/default.template.conf:/etc/nginx/conf.d/default.template"
+        ports:
+            - "80:80"
+            - "443:443"
+        environment:
+            - NGINX_HOST=${NGINX_HOST}
+        command: /bin/sh -c "envsubst '$$NGINX_HOST' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+        restart: always
+        depends_on:
+            - php
+            - mysqldb
+    php:
+        image: nanoninja/php-fpm:${PHP_VERSION}
+        restart: always
+        volumes:
+            - "./php/php.ini:/usr/local/etc/php/conf.d/php.ini"
+            - "./httpd:/var/www/html"
+    composer:
+        image: "composer"
+        volumes:
+            - "./web/app:/app"
+        command: install
+    
+    mysqldb:
+        image: mysql:${MYSQL_VERSION}
+        container_name: ${MYSQL_HOST}
+        restart: always
+        env_file:
+            - ".env"
+        environment:
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        ports:
+            - "3306:3306"
+        volumes:
+            - "./database/db/mysql:/var/lib/mysql"

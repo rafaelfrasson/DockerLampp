@@ -1,0 +1,1 @@
+mysql -u root -p30jo8041 dashboard < "/docker-entrypoint-initdb.d/db-creator.sql"

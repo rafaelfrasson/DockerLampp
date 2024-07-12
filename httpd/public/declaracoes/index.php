@@ -1,5 +1,6 @@
 <?php 
     require_once "config.php";
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,7 @@
           <div class="container">
             
             <a href="?home" class="navbar-brand">
-                <image src="image/logo_a.png" height="50rem" style="margin:0.3rem; ">
+                <image src="assets/image/logo_a.png" height="50rem" style="margin:0.3rem; ">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,17 +52,16 @@
             </div>
           </div>
         </nav>
-        
-        <div id="retirar">
-                <?php
-                    include_once 'codigo-de-aprovacao.php';
-                ?>
-        </div>
 
-        <div id="corpoajax">
+        <div id="corpoajax" class="m-5">
 
+            <div class="container mt-5" id="retirar">
+                    <?php
+                        include_once 'codigo-de-aprovacao.php';
+                    ?>
+            </div>
         <!-- Page Content -->
-            <div class="container" id="formulario" style="margin-top: 2rem;">
+            <div class="container mt-5" id="formulario" style="margin-top: 2rem;">
                 <?php
                     include_once 'formulario-de-solicitacao.php';
                 ?>    
@@ -70,7 +70,7 @@
         
         
         <!-- Footer -->
-        <footer class="page-footer font-small special-color-dark pt-4" style="background-color: #0062cc;">
+        <footer class="page-footer fixed-bottom font-small special-color-dark pt-4" style="background-color: #0062cc;">
 
             <div class="container">
                 <div class="mb-4 text-center">
@@ -94,11 +94,11 @@
             </div>
             <!-- Footer Elements -->
 
-          <!-- Copyright -->
-          <div class="footer-copyright text-center text-white py-3" style="background-color: #004085;">
-              © <?=$_SESSION['version']?> Copyright: <a class="text-white"  href="https://rafaellfrasson.com.br/"><?=$_SESSION['copyright']?></a>
-          </div>
-          <!-- Copyright -->
+            <!-- Copyright -->
+            <div class="footer-copyright  text-center text-white py-3" style="background-color: #004085;">
+                © <?=$_SESSION['version']?> Copyright: <a class="text-white"  href="https://rafaellfrasson.com.br/"><?=$_SESSION['copyright']?></a>
+            </div>
+            <!-- Copyright -->
         </footer>
         <!-- Footer -->
         <!-- Bootstrap -->
@@ -109,7 +109,7 @@
         
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
         <script src="assets/js/ajaxpg.js"> </script>
-        
+        <script src="assets/js/formulario.js"></script>
         <script>
             
             $(function () {

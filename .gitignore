@@ -1,11 +1,2 @@
-http/
-database/db/
-httpd/public/declaracoes/codigo-de-aprovacao.php
-httpd/public/declaracoes/formulario-de-solicitacao.php
-httpd/public/declaracoes/index.php
-httpd/public/declaracoes/assets/image/logo_a.png
-httpd/public/declaracoes/controller/doc-tipo-controller.php
-httpd/public/declaracoes/controller/models/doc-tipo-model.php
-httpd/public/declaracoes/controller/services/conn.php
-httpd/public/declaracoes/controller/services/doc-tipo-service.php
+/database/db/
 /httpd/public
